@@ -34,37 +34,29 @@ public class EditPersonController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO write process to find expectations
-        String id2 = req.getParameter("id");
-        UUID id = UUID.fromString(req.getParameter("id"));
-        String firstName = req.getParameter("firstName");
-        String middleName = req.getParameter("middleName");
-        String secondName = req.getParameter("secondName");
-        String school= req.getParameter("school");
-        String attendDate = req.getParameter("attendDate");
-        String endDate = req.getParameter("endDate");
-        GregorianCalendar attendDateCalend =  new GregorianCalendar();
-        GregorianCalendar endDateCalend =  new GregorianCalendar();
-
-        PersonDTO person = new PersonDTO();
-        person.id = id;
-        person.firstName = firstName;
-        person.middleName = middleName;
-        person.secondName = secondName;
-        try{
-            attendDateCalend.set(Calendar.YEAR, Integer.parseInt(attendDate));
-            endDateCalend.set(Calendar.YEAR, Integer.parseInt(endDate));
-            person.school=school;
-            person.attendDate = attendDateCalend;
-            person.endDate = endDateCalend;
-        } catch (Exception e) {
-
-        }
-
+        PersonVM person = getPersonFromRequest(req);
         INetWorkLogic bll = new NetWorkLogic(new MariaDBDAL());
-
-        bll.update(person);
+        bll.update(person.toPersonDTO());
 
         req.getServletContext().setAttribute("Persons",  bll.getAllPersons());
         req.getRequestDispatcher("jsp\\DisplayPersonView.jsp").forward(req, resp);
+    }
+
+    private PersonVM getPersonFromRequest(HttpServletRequest req) {
+        PersonVM person;
+        String attendDate = req.getParameter("attendDate");
+        String endDate = req.getParameter("endDate");
+
+        String school = req.getParameter("school");
+        if (school != null && school != "null" && school.trim() != "") {
+            GregorianCalendar attendDateCalendar = new GregorianCalendar();
+            GregorianCalendar endDateCalendar = new GregorianCalendar();
+            attendDateCalendar.set(Calendar.YEAR, Integer.parseInt(attendDate));
+            endDateCalendar.set(Calendar.YEAR, Integer.parseInt(endDate));
+            person = new PersonVM(req.getParameter("firstName"), req.getParameter("middleName"), req.getParameter("secondName"), school, attendDateCalendar, endDateCalendar);
+        } else {
+            person = new PersonVM(req.getParameter("firstName"), req.getParameter("middleName"), req.getParameter("secondName"));
+        }
+        return person;
     }
 }

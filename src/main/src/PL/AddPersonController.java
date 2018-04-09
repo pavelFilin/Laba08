@@ -24,15 +24,16 @@ public class AddPersonController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO write process to find expectations
-        PersonVM person = getPerson(req);
+        PersonVM person = getPersonFromRequest(req);
 
         INetWorkLogic bll = new NetWorkLogic(new MariaDBDAL());
         bll.createPerson(person.toPersonDTO());
-        req.getServletContext().setAttribute("Persons", bll.getAllPersons());
+
+        req.getServletContext().setAttribute("Persons",  bll.getAllPersons());
         req.getRequestDispatcher("jsp\\DisplayPersonView.jsp").forward(req, resp);
     }
 
-    private PersonVM getPerson(HttpServletRequest req) {
+    private PersonVM getPersonFromRequest(HttpServletRequest req) {
         PersonVM person;
         String attendDate = req.getParameter("attendDate");
         String endDate = req.getParameter("endDate");
