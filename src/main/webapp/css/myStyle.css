@@ -1,0 +1,162 @@
+.person-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.person-table table, th, td {
+    border: 1px solid black;
+}
+
+.person-table th {
+    border: none;
+}
+
+.person-table td {
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.wrapper {
+    width: 1000px;
+/ padding: 10 px;
+    margin: auto;
+}
+
+.wrapper-table {
+    /*width: 800px;*/
+}
+
+#menu, #menu li {
+    margin: 0;
+    padding: 0;
+}
+
+#menu {
+    text-align: left;
+}
+
+#menu li {
+    display: inline-block;
+    text-align: center;
+}
+
+#menu a {
+    display: block;
+    padding: 5px 15px;
+    color: #fff;
+    font-size: 150%;
+    text-decoration: none;
+    background: #03658e;
+    margin-right: 5px;
+
+}
+
+#menu a:hover {
+    background: #8AB8CC;
+}
+
+.inputs {
+    display: block;
+    margin: 10px;
+
+}
+
+.person-table td:nth-child(7) {
+    color: #0100ff;
+    border: none;
+}
+
+.delete {
+    color: #ff1515;
+}
+
+.delete:hover {
+    color: #ff7f51;
+}
+
+.edit {
+    color: #2cd32d;
+}
+
+.edit:hover {
+    color: #99ff82;
+}
+
+.table_dark {
+    width: 700px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    text-align: left;
+    border-collapse: collapse;
+    background: #252F48;
+    margin: 10px;
+}
+
+.table_dark th {
+    text-align: center;
+    color: #EDB749;
+    border-bottom: 1px solid #37B5A5;
+    padding: 10px 14px;
+}
+
+.table_dark td {
+    color: #CAD4D6;
+    border-bottom: 1px solid #37B5A5;
+    border-right: 1px solid #37B5A5;
+    padding: 5px 12px;
+}
+
+.table_dark tr:last-child td {
+    border-bottom: none;
+}
+
+.table_dark td:last-child {
+    border-right: none;
+    padding: 4px 8px;
+    background-color: #514e71;
+}
+
+.table_dark td:nth-last-child(2) {
+    border-right: none;
+}
+
+.table_dark th:last-child {
+    border-right: none;
+    border-bottom: none;
+    background-color: #514e71;
+}
+
+.table_dark tr:hover td {
+    text-decoration: underline;
+}
+
+.table-rating {
+    width: 0;
+    text-align: center;
+    margin-right: 400px;
+}
+
+.search-persons {
+    background: #252F48;
+    width: 625px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.search-persons input {
+    border: 1px solid #37B5A5;
+    background: #252F48;
+    padding: 4px 8px;
+    font-size: 130%;
+    color: #CAD4D6;
+}
+
+.search-persons input[type="submit"] {
+    color: #EDB749;
+    background-color: #514e71;
+}
+
+.search-persons input[type="submit"]:hover {
+    color: #ffd526;
+    border-color: #46e9d9;
+    background-color: #514e71;
+}
